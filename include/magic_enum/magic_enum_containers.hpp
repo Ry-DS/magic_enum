@@ -523,7 +523,7 @@ class bitset {
       return *this;
     }
 
-    [[nodiscard]] constexpr operator bool() const noexcept { return (parent->a[num_index] & bit_index) > 0; }
+    [[nodiscard]] constexpr operator bool() const noexcept { return (parent->a[num_index] & bit_index) > 0; } // NOLINT(google-explicit-constructor)
 
     [[nodiscard]] constexpr bool operator~() const noexcept { return !static_cast<bool>(*this); }
 
@@ -982,7 +982,7 @@ class set {
 
   constexpr size_type erase(const key_type& key) noexcept {
     typename container_type::reference ref = a[key];
-    bool res = ref;
+    const bool res = ref;
     if (res) {
       --s;
     }
